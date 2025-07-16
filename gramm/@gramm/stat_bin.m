@@ -1,5 +1,5 @@
 function obj=stat_bin(obj,varargin)
-% geom_point Displays an histogram of the data in x
+% stat_bin Displays an histogram of the data in x
 %
 % Example syntax (default arguments): gramm_object.stat_bin('nbins',30,'geom','bar')
 % Options can be given as 'name',value pairs:

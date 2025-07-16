@@ -1244,8 +1244,9 @@ for ind_row=1:length(uni_row) %Loop over rows
 end
 
 
-%White background !
-set(gcf,'color','w','PaperPositionMode','auto');
+%Background !
+set(gcf,'color',obj.facet_axes_handles(1).Color,'PaperPositionMode','auto');
+
 
 % Make everything tight and set the resize function so that it stays so
 if do_redraw  && ~obj.multi.active %Redrawing for multiple plots is handled at the beginning of draw()

@@ -1,4 +1,19 @@
 function obj = geom_interval( obj,varargin )
+% geom_interval Display confidence intervals or error regions
+%
+% Example syntax: gramm_object.geom_interval('geom','area')
+% This will add a layer that displays confidence intervals using the
+% ymin and ymax aesthetics. The data must contain ymin and ymax values
+% that define the interval boundaries.
+%
+% Parameters given as 'name',value pairs:
+% - 'geom': How the intervals are displayed. Options include 'area',
+%           'errorbar', 'line', 'bar' (default 'area')
+% - 'dodge': Spacing between intervals of different colors within an 
+%            unique x value. If empty, automatic dodging is applied
+%            for bar geoms when multiple colors are present (default [])
+% - 'width': Width of the intervals when using bar or errorbar geoms.
+%            If empty, automatically determined based on dodge setting (default [])
 
 p=inputParser;
 my_addParameter(p,'geom','area');

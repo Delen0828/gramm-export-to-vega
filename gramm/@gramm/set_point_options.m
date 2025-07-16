@@ -10,7 +10,10 @@ function obj = set_point_options( obj , varargin )
 % 'input_fun': Provide a function handle to transform the 'size' aesthetic
 % values in actual sizes when 'use_input' is set to true. Default is
 % identity
-% 'styles': Provide order for marker style categories. Default is {'o' 's' 'd' '^' 'v' '>' '<' 'p' 'h' '*' '+' 'x'}
+% 'border_width': Width of point borders/edges. Default is 0.5
+% 'border_color': Color of point borders/edges. Default is 'none'
+% 'markers': Cell array defining order for marker style categories. 
+% Default is {'o' 's' 'd' '^' 'v' '>' '<' 'p' 'h' '*' '+' 'x'}
 
 
 p=inputParser;

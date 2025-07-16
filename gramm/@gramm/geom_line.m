@@ -1,10 +1,20 @@
 function obj=geom_line(obj,varargin)
 % geom_line Display data as lines
 %
+% Example syntax: gramm_object.geom_line('ordered',false,'alpha',1)
 % This will add a layer that will display data as lines
 % If the data is not properly grouped/ordered things can look weird.
 % In simple cases without cell array inputs, setting the 'ordered'
 % parameter to true will order line nodes along the x axis
+%
+% Parameters given as 'name',value pairs:
+% - 'dodge': Spacing between lines of different colors within an 
+%            unique x value (default 0)
+% - 'alpha': Transparency of lines, from 0 (transparent) to 1 (opaque) (default 1)
+% - 'stacked': Set to true to create stacked area plot (default false)
+% - 'fill': Y value to fill from (creates filled area plot) (default [])
+% - 'fill_alpha': Transparency of fill area, from 0 to 1 (default 0.4)
+% - 'ordered': Set to true to order line nodes along x axis for simple arrays (default false)
 
 p=inputParser;
 my_addParameter(p,'dodge',0);

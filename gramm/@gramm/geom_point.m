@@ -1,7 +1,13 @@
 function obj=geom_point(obj,varargin)
 % geom_point Display data as points
 %
+% Example syntax: gramm_object.geom_point('dodge',0,'alpha',1)
 % This will add a layer that will display data as points
+%
+% Parameters given as 'name',value pairs:
+% - 'dodge': Spacing between points of different colors within an 
+%            unique x value (default 0)
+% - 'alpha': Transparency of points, from 0 (transparent) to 1 (opaque) (default 1)
 
 p=inputParser;
 my_addParameter(p,'dodge',0);

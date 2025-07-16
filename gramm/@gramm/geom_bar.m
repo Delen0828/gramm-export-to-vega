@@ -1,11 +1,19 @@
 function obj=geom_bar(obj,varargin)
-% geom_point Display data as bars
+% geom_bar Display data as bars
 %
-% Example syntax (default arguments): gramm_object.geom_bar(0.8)
+% Example syntax (default arguments): gramm_object.geom_bar('width',0.6)
 % This will add a layer that will display data as bars. When
 % data in several colors has to be displayed, the bars of
-% different colors are dodged. The function can receive an
-% optional argument specifying the width of the bar
+% different colors are dodged.
+%
+% Parameters given as 'name',value pairs:
+% - 'width': Width of the bars (default 0.6)
+% - 'stacked': Set to true to stack bars instead of dodging them (default false)
+% - 'dodge': Spacing between bars of different colors within an unique x value (default 0)
+% - 'FaceColor': Face color of bars, can be 'auto' to use data color (default 'auto')
+% - 'EdgeColor': Edge color of bars, can be 'auto' to use data color (default 'k')
+% - 'fill': Fill style, can be 'edge', 'face', 'all', or 'transparent' (default [])
+% - 'LineWidth': Width of bar edges (default uses line_size from data)
 
 if mod(numel(varargin),2)~=0
     error('Improper number of ''name'',value argument pairs')

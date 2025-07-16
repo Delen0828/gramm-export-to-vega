@@ -20,6 +20,8 @@ function obj=stat_smooth(obj,varargin)
 % documentation)
 % - 'npoints': number of points over which the smooth is
 % evaluated (default is 200).
+% - 'setylim': Set to true to adjust y-axis limits based on smoothed
+% curves rather than original data (default false).
 %
 % If used with repeated data (ie when y is given as 2D
 % array or cell array), each trajectory will be smoothed and
