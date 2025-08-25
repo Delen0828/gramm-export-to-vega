@@ -1,8 +1,3 @@
----
-title: Gramm - Grammar of Graphics for MATLAB
-layout: default
----
-
 # gramm
 
 
