@@ -426,6 +426,16 @@ try
             ymean=pd.mean;
             ci=paramci(pd,alpha);
             yci=ci(:,2)';
+        case 'fitgammaci'
+            pd=fitdist(y,'Gamma');
+            ymean=pd.b;
+            ci=paramci(pd,'Alpha',alpha,'Parameter','b');
+            yci=ci';
+        case 'fitinvgaussianci'
+            pd=fitdist(y,'InverseGaussian');
+            ymean=pd.mu;
+            ci=paramci(pd,'Alpha',alpha,'Parameter','mu');
+            yci=ci';
         case 'fit95percentile'
             pd=fitdist(y,'Normal');
             ymean=pd.icdf(0.5);
