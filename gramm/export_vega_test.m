@@ -420,3 +420,266 @@ close all;
 
 svg_files{end+1} = 'test_large_interactive.svg';
 test_titles{end+1} = 'Large Dataset Interactive Test';
+
+%% Test 20: Linear Regression (GLM)
+figure('Visible', 'off');
+x = linspace(0, 10, 50);
+y = 2*x + randn(1, 50)*2;
+
+g20 = gramm('x', x, 'y', y);
+g20.stat_glm();
+g20.geom_point();
+g20.set_title('Linear Regression (GLM)');
+g20.set_names('x', 'X Values', 'y', 'Y Values');
+g20.draw();
+
+export_vega(g20, 'file_name', 'test_stat_glm', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_glm.svg');
+g20.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_glm.svg';
+test_titles{end+1} = 'Linear Regression (GLM)';
+
+%% Test 21: Multi-Group GLM
+figure('Visible', 'off');
+x = repmat(linspace(0, 10, 25), 1, 2);
+y = [2*linspace(0, 10, 25) + randn(1, 25)*2, 3*linspace(0, 10, 25) + randn(1, 25)*2];
+groups = [repmat({'Group A'}, 1, 25), repmat({'Group B'}, 1, 25)];
+
+g21 = gramm('x', x, 'y', y, 'color', groups);
+g21.stat_glm();
+g21.geom_point();
+g21.set_title('Multi-Group GLM');
+g21.set_names('x', 'X Values', 'y', 'Y Values', 'color', 'Groups');
+g21.draw();
+
+export_vega(g21, 'file_name', 'test_stat_glm_groups', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_glm_groups.svg');
+g21.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_glm_groups.svg';
+test_titles{end+1} = 'Multi-Group GLM';
+
+%% Test 22: Eilers Smoothing
+figure('Visible', 'off');
+x = linspace(0, 4*pi, 100);
+y = sin(x) + randn(1, 100)*0.3;
+
+g22 = gramm('x', x, 'y', y);
+g22.stat_smooth();
+g22.geom_point();
+g22.set_title('Eilers Smoothing');
+g22.set_names('x', 'X Values', 'y', 'Y Values');
+g22.draw();
+
+export_vega(g22, 'file_name', 'test_stat_smooth', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_smooth.svg');
+g22.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_smooth.svg';
+test_titles{end+1} = 'Eilers Smoothing';
+
+%% Test 23: Basic Histogram
+figure('Visible', 'off');
+x = randn(200, 1);
+
+g23 = gramm('x', x);
+g23.stat_bin();
+g23.set_title('Basic Histogram');
+g23.set_names('x', 'Values', 'y', 'Count');
+g23.draw();
+
+export_vega(g23, 'file_name', 'test_stat_bin', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_bin.svg');
+g23.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_bin.svg';
+test_titles{end+1} = 'Basic Histogram';
+
+%% Test 24: Grouped Histogram
+figure('Visible', 'off');
+x = [randn(100, 1); randn(100, 1) + 2];
+groups = [repmat({'Group A'}, 100, 1); repmat({'Group B'}, 100, 1)];
+
+g24 = gramm('x', x, 'color', groups);
+g24.stat_bin();
+g24.set_title('Grouped Histogram');
+g24.set_names('x', 'Values', 'y', 'Count', 'color', 'Groups');
+g24.draw();
+
+export_vega(g24, 'file_name', 'test_stat_bin_groups', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_bin_groups.svg');
+g24.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_bin_groups.svg';
+test_titles{end+1} = 'Grouped Histogram';
+
+%% Test 25: Statistical Summary
+figure('Visible', 'off');
+x = repmat({'A', 'B', 'C'}, 1, 30);
+y = [randn(1, 30) + 2, randn(1, 30) + 4, randn(1, 30) + 6];
+
+g25 = gramm('x', x, 'y', y);
+g25.stat_summary('type', 'sem');
+g25.set_title('Statistical Summary');
+g25.set_names('x', 'Categories', 'y', 'Values');
+g25.draw();
+
+export_vega(g25, 'file_name', 'test_stat_summary', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_summary.svg');
+g25.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_summary.svg';
+test_titles{end+1} = 'Statistical Summary';
+
+%% Test 26: Kernel Density
+figure('Visible', 'off');
+x = [randn(100, 1); randn(100, 1) + 3];
+groups = [repmat({'Group A'}, 100, 1); repmat({'Group B'}, 100, 1)];
+
+g26 = gramm('x', x, 'color', groups);
+g26.stat_density();
+g26.set_title('Kernel Density');
+g26.set_names('x', 'Values', 'y', 'Density', 'color', 'Groups');
+g26.draw();
+
+export_vega(g26, 'file_name', 'test_stat_density', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_density.svg');
+g26.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_density.svg';
+test_titles{end+1} = 'Kernel Density';
+
+%% Test 27: Violin Plots
+figure('Visible', 'off');
+x = repmat({'Low', 'Medium', 'High'}, 1, 50);
+y = [randn(1, 50) + 2, randn(1, 50) + 4, randn(1, 50) + 6];
+
+g27 = gramm('x', x, 'y', y);
+g27.stat_violin();
+g27.set_title('Violin Plots');
+g27.set_names('x', 'Categories', 'y', 'Values');
+g27.draw();
+
+export_vega(g27, 'file_name', 'test_stat_violin', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_violin.svg');
+g27.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_violin.svg';
+test_titles{end+1} = 'Violin Plots';
+
+%% Test 28: Box Plots
+figure('Visible', 'off');
+x = repmat({'A', 'B', 'C', 'D'}, 1, 25);
+y = [randn(1, 25) + 1, randn(1, 25) + 3, randn(1, 25) + 5, randn(1, 25) + 7];
+
+g28 = gramm('x', x, 'y', y);
+g28.stat_boxplot();
+g28.set_title('Box Plots');
+g28.set_names('x', 'Categories', 'y', 'Values');
+g28.draw();
+
+export_vega(g28, 'file_name', 'test_stat_boxplot', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_boxplot.svg');
+g28.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_boxplot.svg';
+test_titles{end+1} = 'Box Plots';
+
+%% Test 29: Q-Q Plots
+figure('Visible', 'off');
+x = [randn(50, 1); randn(50, 1) * 2 + 1];
+groups = [repmat({'Normal'}, 50, 1); repmat({'Skewed'}, 50, 1)];
+
+g29 = gramm('x', x, 'color', groups);
+g29.stat_qq();
+g29.set_title('Q-Q Plots');
+g29.set_names('x', 'Sample Quantiles', 'y', 'Theoretical Quantiles', 'color', 'Distribution');
+g29.draw();
+
+export_vega(g29, 'file_name', 'test_stat_qq', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_qq.svg');
+g29.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_qq.svg';
+test_titles{end+1} = 'Q-Q Plots';
+
+%% Test 30: Polynomial Fitting (stat_fit)
+figure('Visible', 'off');
+x = linspace(0, 10, 50);
+y = 0.1*x.^2 + randn(1, 50)*2;
+
+g30 = gramm('x', x, 'y', y);
+g30.stat_fit('fun', @(a,b,c,x) a*x.^2 + b*x + c);
+g30.geom_point();
+g30.set_title('Polynomial Fitting');
+g30.draw();
+
+export_vega(g30, 'file_name', 'test_stat_fit', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_fit.svg');
+g30.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_fit.svg';
+test_titles{end+1} = 'Polynomial Fitting';
+
+%% Test 31: 2D Histograms
+figure('Visible', 'off');
+x = randn(200, 1);
+y = x + randn(200, 1);
+
+g31 = gramm('x', x, 'y', y);
+g31.stat_bin2d();
+g31.set_title('2D Histograms');
+g31.draw();
+
+export_vega(g31, 'file_name', 'test_stat_bin2d', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_bin2d.svg');
+g31.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_bin2d.svg';
+test_titles{end+1} = '2D Histograms';
+
+%% Test 32: Confidence Ellipses
+figure('Visible', 'off');
+x = [randn(50, 1); randn(50, 1) + 3];
+y = [randn(50, 1); randn(50, 1) + 2];
+groups = [repmat({'Cluster A'}, 50, 1); repmat({'Cluster B'}, 50, 1)];
+
+g32 = gramm('x', x, 'y', y, 'color', groups);
+g32.stat_ellipse();
+g32.geom_point();
+g32.set_title('Confidence Ellipses');
+g32.draw();
+
+export_vega(g32, 'file_name', 'test_stat_ellipse', 'export_path', vega_dir, 'width', '400', 'height', '300');
+
+svg_filename = fullfile(svg_dir, 'test_stat_ellipse.svg');
+g32.export('file_name', svg_filename);
+close all;
+
+svg_files{end+1} = 'test_stat_ellipse.svg';
+test_titles{end+1} = 'Confidence Ellipses';
