@@ -9,3 +9,7 @@ CLAUDE.md
 GITHUB_ACTIONS.md
 coverage-report/
 test-report/
+.buildtool/
+build/
+issues.mat
+gramm/examples/html/

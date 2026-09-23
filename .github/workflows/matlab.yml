@@ -58,6 +58,7 @@ jobs:
           path: |
             test-report/
             coverage-report/
+            build/vega/
             release/
 
       # Alternatively, run MATLAB scripts, functions, and statements.

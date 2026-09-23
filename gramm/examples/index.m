@@ -51,3 +51,8 @@
 % * <example_advanced_superimposed_plots.html Superimposed plots>
 % * <example_advanced_broken_axis.html Broken axis>
 % * <example_advanced_post_draw_customization.html Post-draw customization>
+
+%% Vega export
+%
+% * <vega/index.html Vega export examples>
+% * <../../../build/vega/index.html Interactive Vega/SVG comparison gallery>
